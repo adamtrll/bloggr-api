@@ -7,7 +7,7 @@
 | Visitors | Authenticate     | Users login to the website    | credentials       | Auth token        | Authenticate user       |
 | Users | Manage profile | Edit profile | name, email, bio | **profile** | Update existing profile |
 | Users | Manage profile | Delete profile | **profile** | - | Delete existing profile |
-| Visitors | Get profile details | Get profile details | **profile** id | **profile** | Get details of a profile |
+| Visitors | Get profile details | Get profile details | **profile** id | **profile**, profile metrics | Get details of a profile |
 | Users | Create new post  | List all topics               | -        | **topic** list        | Get available topics |
 | Users | Create new post  | Publish post                  | title, description, content, **topic** | **post** | Publish new post |
 | Users | Manage posts     | List all posts               | -        | **post** list        | Get all posts by the user |
