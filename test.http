@@ -1,0 +1,24 @@
+### Get authenticated user
+GET http://localhost/api/user
+Accept: application/json
+
+### Test route
+GET http://localhost/api/test
+Accept: application/json
+
+### Get topics
+GET http://localhost/api/topics
+Accept: application/json
+
+### Create post
+POST http://localhost/api/posts
+accept: application/json
+content-type: application/json
+
+{
+    "title": "Test Post",
+    "slug": "test-post",
+    "description": "This is a test post description",
+    "topic_id": 1,
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+}
