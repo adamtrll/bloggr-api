@@ -3,9 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers;
+
 use App\Models\Topic;
-use App\Models\Post;
-use App\Models\User;
 use App\Http\Resources;
 
 Route::get('/user', function (Request $request) {
@@ -19,19 +19,8 @@ Route::get('topics', function () {
     return new Resources\TopicCollection($topics);
 });
 
-
-Route::post('posts', function (Request $request) {
-    $request->validate([
-        'title' => 'required|string|min:3|max:100',
-        'description' => 'required|string|min:20|max:250',
-        'content' => 'required|string',
-        'slug' => 'required|string|min:3|max:100|alpha_dash|unique:posts,slug',
-        'topic_id' => ['required', 'exists:topics,id'],
-    ]);
-
-    $user = User::inRandomOrder()->first();
-
-    $post = $user->posts()->create($request->all());
-
-    return new Resources\Post($post);
-});
+Route::get('posts', [Controllers\PostController::class, 'index']);
+Route::get('posts/{post}', [Controllers\PostController::class, 'show']);
+Route::post('posts', [Controllers\PostController::class, 'store']);
+Route::put('posts/{post}', [Controllers\PostController::class, 'update']);
+Route::delete('posts/{post}', [Controllers\PostController::class, 'destroy']);

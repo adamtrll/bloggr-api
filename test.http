@@ -10,15 +10,43 @@ Accept: application/json
 GET http://localhost/api/topics
 Accept: application/json
 
+### Get posts
+GET http://localhost/api/posts
+Accept: application/json
+
+### Get post
+GET http://localhost/api/posts/10
+Accept: application/json
+
 ### Create post
 POST http://localhost/api/posts
 accept: application/json
 content-type: application/json
 
 {
-    "title": "Test Post",
-    "slug": "test-post",
+    "title": "My first post",
+    "slug": "my-first-post",
     "description": "This is a test post description",
+    "topic_id": 8,
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+}
+
+
+### Update post
+PUT http://localhost/api/posts/1
+accept: application/json
+content-type: application/json
+
+{
+    "title": "Test post updated",
+    "slug": "test-post-2",
+    "description": "This is a test post description updated",
     "topic_id": 1,
     "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
 }
+
+
+### Delete post
+DELETE http://localhost/api/posts/1
+accept: application/json
+content-type: application/json
