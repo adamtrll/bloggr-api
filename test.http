@@ -1,10 +1,8 @@
-### Get authenticated user
-GET http://localhost/api/user
-Accept: application/json
-Authorization: Bearer 10|pSr1Q9XNkaEIUbwpTzN0AIdC5m2MlAIAtOWEsJZs99b692d3
+@url = http://localhost/api
 
 ### Login
-POST http://localhost/api/login
+# @name login
+POST {{url}}/login
 Accept: application/json
 content-type: application/json
 
@@ -13,41 +11,56 @@ content-type: application/json
     "password": "password"
 }
 
+###
+
+@token = {{ login.response.body.token }}
+
+### Get authenticated user
+GET {{url}}/user
+Accept: application/json
+Authorization: Bearer {{ token }}
+
 ### Test route
-GET http://localhost/api/test
+GET {{url}}/test
 Accept: application/json
 
 ### Get topics
-GET http://localhost/api/topics
+GET {{url}}/topics
 Accept: application/json
 
 ### Get posts
-GET http://localhost/api/posts
+GET {{url}}/posts
 Accept: application/json
 
 ### Get post
-GET http://localhost/api/posts/10
+GET {{url}}/posts/10
 Accept: application/json
 
 ### Create post
-POST http://localhost/api/posts
+# @prompt title
+# @prompt slug
+# @prompt topic_id
+# @prompt description
+# @prompt content
+POST {{url}}/posts
 accept: application/json
 content-type: application/json
-Authorization: Bearer 10|pSr1Q9XNkaEIUbwpTzN0AIdC5m2MlAIAtOWEsJZs99b692d3
+Authorization: Bearer {{ token }}
 
 {
-    "title": "My first post",
-    "slug": "my-first-post-wef",
-    "description": "This is a test post description",
-    "topic_id": 8,
-    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+    "title": "{{ title }}",
+    "slug": "{{ slug }}",
+    "topic_id": "{{ topic_id }}",
+    "description": "{{ description }}",
+    "content": "{{ content }}"
 }
 
 
 ### Update post
-PUT http://localhost/api/posts/1
+PUT {{url}}/posts/1
 accept: application/json
 content-type: application/json
+Authorization: Bearer {{ token }}
 
 {
     "title": "Test post updated",
@@ -59,6 +72,7 @@ content-type: application/json
 
 
 ### Delete post
-DELETE http://localhost/api/posts/1
+DELETE {{url}}/posts/1
 accept: application/json
 content-type: application/json
+Authorization: Bearer {{ token }}
