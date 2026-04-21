@@ -8,11 +8,6 @@ use App\Http\Controllers;
 use App\Models\Topic;
 use App\Http\Resources;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
-
-
 Route::get('topics', function () {
     $topics = Topic::orderBy('name')->get();
 
@@ -21,8 +16,16 @@ Route::get('topics', function () {
 
 Route::get('posts', [Controllers\PostController::class, 'index']);
 Route::get('posts/{post}', [Controllers\PostController::class, 'show']);
-Route::post('posts', [Controllers\PostController::class, 'store']);
-Route::put('posts/{post}', [Controllers\PostController::class, 'update']);
-Route::delete('posts/{post}', [Controllers\PostController::class, 'destroy']);
 
 Route::post('login', [Controllers\AuthController::class, 'login']);
+
+
+Route::group(['middleware' => 'auth:sanctum'], function () {
+    Route::get('/user', function (Request $request) {
+        return $request->user();
+    });
+
+    Route::post('posts', [Controllers\PostController::class, 'store']);
+    Route::put('posts/{post}', [Controllers\PostController::class, 'update']);
+    Route::delete('posts/{post}', [Controllers\PostController::class, 'destroy']);
+});

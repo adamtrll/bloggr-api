@@ -25,9 +25,10 @@ class PostController extends Controller
      */
     public function store(PostRequest $request)
     {
-        $user = User::inRandomOrder()->first();
-
-        $post = $user->posts()->create($request->all());
+        $post = $request
+            ->user()
+            ->posts()
+            ->create($request->all());
 
         return new PostResource($post);
     }

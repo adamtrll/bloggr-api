@@ -33,10 +33,11 @@ Accept: application/json
 POST http://localhost/api/posts
 accept: application/json
 content-type: application/json
+Authorization: Bearer 10|pSr1Q9XNkaEIUbwpTzN0AIdC5m2MlAIAtOWEsJZs99b692d3
 
 {
     "title": "My first post",
-    "slug": "my-first-post",
+    "slug": "my-first-post-wef",
     "description": "This is a test post description",
     "topic_id": 8,
     "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
