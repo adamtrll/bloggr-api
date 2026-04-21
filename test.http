@@ -1,6 +1,17 @@
 ### Get authenticated user
 GET http://localhost/api/user
 Accept: application/json
+Authorization: Bearer 10|pSr1Q9XNkaEIUbwpTzN0AIdC5m2MlAIAtOWEsJZs99b692d3
+
+### Login
+POST http://localhost/api/login
+Accept: application/json
+content-type: application/json
+
+{
+    "email": "test@example.com",
+    "password": "password"
+}
 
 ### Test route
 GET http://localhost/api/test

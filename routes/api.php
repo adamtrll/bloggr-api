@@ -24,3 +24,5 @@ Route::get('posts/{post}', [Controllers\PostController::class, 'show']);
 Route::post('posts', [Controllers\PostController::class, 'store']);
 Route::put('posts/{post}', [Controllers\PostController::class, 'update']);
 Route::delete('posts/{post}', [Controllers\PostController::class, 'destroy']);
+
+Route::post('login', [Controllers\AuthController::class, 'login']);
