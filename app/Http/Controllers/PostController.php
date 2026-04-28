@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
-use App\Models\User;
 use App\Http\Resources\Post as PostResource;
 use App\Http\Requests\PostRequest;
 use App\Http\Resources\PostCollection as PostCollectionResource;
