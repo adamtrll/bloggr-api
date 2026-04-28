@@ -1,5 +1,4 @@
-@origin = {{ $dotenv APP_URL }}
-@url = {{ $origin }}/api
+@url = {{ $dotenv APP_URL }}/api
 
 ### Login
 # @name login
@@ -86,3 +85,22 @@ DELETE {{url}}/posts/{{ post_id }}
 accept: application/json
 content-type: application/json
 Authorization: Bearer {{ token }}
+
+
+### Comment on post
+# @prompt post_id
+# @prompt comment
+POST {{url}}/posts/{{ post_id }}/comments
+accept: application/json
+content-type: application/json
+Authorization: Bearer {{ token }}
+
+{
+    "comment": "{{ comment }}"
+}
+
+### Comments on post
+# @prompt post_id
+GET {{url}}/posts/{{ post_id }}/comments
+accept: application/json
+content-type: application/json
