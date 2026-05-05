@@ -104,3 +104,16 @@ Authorization: Bearer {{ token }}
 GET {{url}}/posts/{{ post_id }}/comments
 accept: application/json
 content-type: application/json
+
+
+### Reply to comment
+# @prompt comment_id
+# @prompt message
+POST {{url}}/comments/{{ comment_id }}/replies
+accept: application/json
+content-type: application/json
+Authorization: Bearer {{ token }}
+
+{
+    "message": "{{ message }}"
+}
