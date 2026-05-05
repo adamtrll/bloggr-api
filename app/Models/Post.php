@@ -32,4 +32,9 @@ class Post extends Model
             ->morphMany(Comment::class, 'commentable')
             ->orderBy('created_at', 'desc');
     }
+
+    public function isOwnedBy(User $user): bool
+    {
+        return $this->author_id === $user->id;
+    }
 }
